@@ -80,18 +80,32 @@
 
     <script>
         let sites = prompt('How many sites does your map have?');
+        // Array of remaining sites
+        let remainingSites = [];
 
         document.addEventListener('click', () => {
-            let random = Math.floor(Math.random() * sites) + 1;
-            // output as alphabetic character
-            document.querySelector('.site').innerHTML = String.fromCharCode(64 + random);
+            // If remaining sites is empty, fill it with all sites
+            if (remainingSites.length == 0) {
+                for (let i = 1; i <= sites; i++) {
+                    remainingSites.push(String.fromCharCode(64 + i));
+                }
+                for (let i = 1; i <= sites; i++) {
+                    remainingSites.push(String.fromCharCode(64 + i));
+                }
+                for (let i = 1; i <= sites; i++) {
+                    remainingSites.push(String.fromCharCode(64 + i));
+                }
+                for (let i = 1; i <= sites; i++) {
+                    remainingSites.push(String.fromCharCode(64 + i));
+                }
+                remainingSites.sort(() => Math.random() - 0.5);
 
-            // Make circle visible and take up the whole screen. Then scale it down until it's gone
-            // Steps:
-            // 1. Make circle visible
-            // 2. Scale circle up to 100%
-            // 3. Scale circle down to 0%
-            // 4. Hide circle
+                console.log(remainingSites);
+            }
+
+            // Pop site into .site
+            document.querySelector('.site').innerHTML = remainingSites.pop();
+
             document.querySelector('.circle').style.display = 'block';
             document.querySelector('.circle').style.transform = 'translate(-50%, -50%) scale(5)';
             setTimeout(() => {
