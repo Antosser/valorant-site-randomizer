@@ -95,13 +95,9 @@
                 for (let i = 1; i <= sites; i++) {
                     remainingSites.push(String.fromCharCode(64 + i));
                 }
-                for (let i = 1; i <= sites; i++) {
-                    remainingSites.push(String.fromCharCode(64 + i));
-                }
                 remainingSites.sort(() => Math.random() - 0.5);
-
-                console.log(remainingSites);
             }
+            console.log(remainingSites);
 
             // Pop site into .site
             document.querySelector('.site').innerHTML = remainingSites.pop();
@@ -124,7 +120,7 @@
             A
         </div>
         <div class="info">
-            Click anywhere to get a random site
+            Click anywhere to get a random Valorant bomb-site
         </div>
     </div>
 
