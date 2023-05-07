@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant Site Randomizer</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ff4654;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+            font-family: 'Roboto Mono', 'sans-serif';
+
+        }
+
+        .site {
+            font-size: 10rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px #fff;
+            cursor: pointer;
+        }
+
+        .info {
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px #fff;
+        }
+
+        .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: #c7f459;
+            display: none;
+
+            /* Animate */
+            transition: all 0.5s ease-out;
+        }
+
+        .github-follow {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: 'Roboto Mono', 'sans-serif';
+            margin: 5px;
+
+            /* Glow */
+            box-shadow: 0 0 10px #fff;
+        }
+    </style>
+
+    <script>
+        let sites = prompt('How many sites does your map have?');
+
+        document.addEventListener('click', () => {
+            let random = Math.floor(Math.random() * sites) + 1;
+            // output as alphabetic character
+            document.querySelector('.site').innerHTML = String.fromCharCode(64 + random);
+
+            // Make circle visible and take up the whole screen. Then scale it down until it's gone
+            // Steps:
+            // 1. Make circle visible
+            // 2. Scale circle up to 100%
+            // 3. Scale circle down to 0%
+            // 4. Hide circle
+            document.querySelector('.circle').style.display = 'block';
+            document.querySelector('.circle').style.transform = 'translate(-50%, -50%) scale(5)';
+            setTimeout(() => {
+                document.querySelector('.circle').style.transform = 'translate(-50%, -50%) scale(0)';
+                setTimeout(() => {
+                    document.querySelector('.circle').style.display = 'none';
+                }, 500);
+            }, 1);
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="site">
+            A
+        </div>
+        <div class="info">
+            Click anywhere to get a random site
+        </div>
+    </div>
+
+    <div class="circle"></div>
+
+    <a href="https://github.com/Antosser">
+        <div class="github-follow">
+            Follow me on GitHub
+        </div>
+    </a>
+</body>
+
+</html>
